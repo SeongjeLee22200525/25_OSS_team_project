@@ -1,38 +1,435 @@
-.App {
+/* 전체 배경/레이아웃 */
+.page {
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1a1a1a;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 상단 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* 탭 버튼들 */
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  border: 1px solid #999;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  cursor: pointer;
+}
+
+.tab-active {
+  background: #000;
+  color: #fff;
+}
+
+/* 검색 카드 */
+.search-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 6%);
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* 위쪽 첫 줄 */
+.form-grid-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* 아래쪽 두 번째 줄 */
+.form-grid-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.form-row-inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  min-width: 260px;
+}
+
+.form-row-inline.wrap {
+  flex-wrap: wrap;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  color: #000;
+  margin-right: 4px;
+  font-weight: 500;
+}
+
+/* 인풋류 */
+.input {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  min-width: 150px;
+}
+
+.select {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  min-width: 110px;
+  background: #fff;
+}
+
+.select.small {
+  min-width: 160px;
+}
+
+.input-date {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  min-width: 140px;
+}
+
+.range-tilde {
+  color: #666;
+  font-size: 14px;
+}
+
+/* 조회/초기화 버튼 묶음 */
+.button-group-right {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* 버튼 스타일 */
+.btn-primary {
+  background: #4f5bd5; /* 파란 느낌 */
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 10px rgb(79 91 213 / 30%);
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: #fff;
+  color: #000;
+  border: 1px solid #888;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 5%);
+  cursor: pointer;
+}
+
+/* 구분선 */
+.divider {
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+/* 결과 상단 영역 (총 n건 / 정렬 드롭다운) */
+.result-header {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 8px;
+}
+
+.result-count {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* 테이블 래퍼 */
+.table-wrapper {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 6%);
+  overflow-x: auto;
+}
+
+/* 테이블 */
+.movie-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 800px;
+}
+
+.movie-table thead {
+  background: #f9f9f9;
+  border-bottom: 2px solid #cfcfcf;
+}
+
+.movie-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 12px;
+  white-space: nowrap;
+  vertical-align: top;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 13px;
+  color: #222;
+}
+
+.movie-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: top;
+  font-size: 13px;
+  color: #222;
+}
+
+.link-cell {
+  color: #1a4ab9;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+.no-result {
+  padding: 40px 12px;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* 테이블 안의 작은 버튼들 */
+.btn-add {
+  background: #1f9d55;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  font-size: 13px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background: #d92d20;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  font-size: 13px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* MyPage 레이아웃 */
+.mypage-block {
+  margin-top: 24px;
+}
+
+.mypage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.mypage-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 로딩/에러 카드 */
+.card.notice {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 6%);
+  padding: 24px;
+  font-size: 14px;
+}
+
+.card.notice.error {
+  color: #c62828;
+  font-weight: 500;
+}
+
+.center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 페이지네이션 */
+.pagination-bar {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 8px;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pagination-info {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-page {
+  min-width: 48px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+}
+
+.btn-page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.add-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.add-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 6%);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  font-size: 14px;
+}
+
+.add-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  margin-bottom: 20px;
+}
+
+.add-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.add-sub {
+  font-size: 13px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.add-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-label-strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.form-group-vert {
   display: flex;
   flex-direction: column;
+}
+
+.input.full {
+  width: 100%;
+}
+
+.input.smallnum {
+  width: 80px;
+}
+
+.favorite-row {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 8px;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.favorite-mark {
+  font-weight: 500;
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary.big {
+  font-size: 15px;
+  padding: 10px 20px;
 }
