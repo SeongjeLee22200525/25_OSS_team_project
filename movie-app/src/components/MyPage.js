@@ -1,7 +1,6 @@
-// src/components/MyPage.js
 import React from "react";
 
-export default function MyPage({ list, remove, back }) {
+export default function MyPage({ list, remove, edit, back }) {
   return (
     <div className="mypage-block">
       <div className="mypage-header">
@@ -22,12 +21,12 @@ export default function MyPage({ list, remove, back }) {
               <th>한줄평</th>
               <th>평점</th>
               <th>즐겨찾기</th>
-              <th>제거</th>
+              <th>관리</th>
             </tr>
           </thead>
           <tbody>
             {list.map((m) => (
-              <tr key={m.id /* mockapi에서 온 고유 id */}>
+              <tr key={m.id}>
                 <td>{m.title}</td>
                 <td>{m.director || "-"}</td>
                 <td>{m.year || "-"}</td>
@@ -36,12 +35,20 @@ export default function MyPage({ list, remove, back }) {
                 <td>{m.rating ?? "-"}</td>
                 <td>{m.favorite ? "★" : "☆"}</td>
                 <td>
-                  <button
-                    className="btn-delete"
-                    onClick={() => remove(m.id)}
-                  >
-                    삭제
-                  </button>
+                  <div style={{ display: "flex", gap: "6px" }}>
+                    <button
+                      className="btn-outline"
+                      onClick={() => edit(m.id)}
+                    >
+                      수정
+                    </button>
+                    <button
+                      className="btn-delete"
+                      onClick={() => remove(m.id)}
+                    >
+                      삭제
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
