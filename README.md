@@ -8,7 +8,7 @@ React Hook Form과 Material UI를 사용하여 간결하고 직관적인 UI를 �
 ---
 
 ## 🚀 배포 및 저장소
-- **배포 URL:** (예정) https://25-oss-team-project.vercel.app  
+- **배포 URL:** https://25-oss-team-project-2yax.vercel.app/  
 - **GitHub:** https://github.com/SeongjeLee22200525/25_OSS_team_project  
 - **팀원:** 박지호, 이성제  
 
